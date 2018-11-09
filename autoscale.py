@@ -66,10 +66,11 @@ def job():
                                 aws_secret_access_key=aws_secret_access_key)
     metric = cloudwatch.Metric('AWS/SQS', 'ApproximateNumberOfMessagesVisible')
     # print(metric.dimensions)
-    inicio = datetime.datetime.now() - datetime.timedelta(hours=5, seconds=300)
+    inicio = datetime.datetime.now() + datetime.timedelta(hours=5)-datetime.timedelta(seconds=300)
     inicio = inicio.isoformat()
-    ahora = datetime.datetime.now() - datetime.timedelta(hours=5)
+    ahora = datetime.datetime.now() + datetime.timedelta(hours=5)
     ahora = ahora.isoformat()
+    print(inicio,'   ',ahora)
     qmensajes = metric.get_statistics(Dimensions=[
         {
             'Name': 'QueueName',
@@ -82,12 +83,13 @@ def job():
         Statistics=['Average']
     )
     q=qmensajes['Datapoints'][0]['Average']
-    if q>10 and q < 21:
+    print(q)
+    if q>20:
         print('Scaling to 2 dynos...')
-        print(scale(2))
-    elif q >20:
-        print('Scaling  to 3 dynos...')
         print(scale(3))
+    elif q <20 and q>10:
+        print('Scaling  to 3 dynos...')
+        print(scale(2))
     elif q<11 and q > 2:
         print('Scaling to 1 dyno ...')
         print(scale(1))

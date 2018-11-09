@@ -54,7 +54,7 @@ def scale(size):
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', minutes=2)
 def job():
 
     region_name = 'us-east-1'
@@ -66,9 +66,9 @@ def job():
                                 aws_secret_access_key=aws_secret_access_key)
     metric = cloudwatch.Metric('AWS/SQS', 'ApproximateNumberOfMessagesVisible')
     # print(metric.dimensions)
-    inicio = datetime.datetime.now() + datetime.timedelta(hours=5)-datetime.timedelta(seconds=300)
+    inicio = datetime.datetime.now() + datetime.timedelta(hours=0)-datetime.timedelta(seconds=300)
     inicio = inicio.isoformat()
-    ahora = datetime.datetime.now() + datetime.timedelta(hours=5)
+    ahora = datetime.datetime.now() + datetime.timedelta(hours=0)
     ahora = ahora.isoformat()
     print(inicio,'   ',ahora)
     qmensajes = metric.get_statistics(Dimensions=[
@@ -93,7 +93,7 @@ def job():
     elif q<11 and q > 2:
         print('Scaling to 1 dyno ...')
         print(scale(1))
-    elif q < 2:
+    elif q < 1:
         print('Scaling to 0 dyno ...')
         print(scale(0))
 

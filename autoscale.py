@@ -90,7 +90,7 @@ def job():
     elif q <20 and q>10:
         print('Scaling  to 3 dynos...')
         print(scale(2))
-    elif q<11 and q > 2:
+    elif q<11 and q > 8:
         print('Scaling to 1 dyno ...')
         print(scale(1))
     elif q < 1:

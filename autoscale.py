@@ -95,7 +95,7 @@ def job():
         print(scale(1))
     elif q < 1:
         print('Scaling to 0 dyno ...')
-        print(scale(1))
+        print(scale(0))
 
 
 

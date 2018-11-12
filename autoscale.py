@@ -85,12 +85,12 @@ def job():
     q=qmensajes['Datapoints'][0]['Average']
     print(q)
     if q>20:
-        print('Scaling to 2 dynos...')
+        print('Scaling to 3 dynos...')
         print(scale(3,"performance-m"))
-    elif q <20 and q>18:
-        print('Scaling  to 3 dynos...')
+    elif q <20 and q>8:
+        print('Scaling  to 2 dynos...')
         print(scale(2,"performance-m"))
-    elif q<11 and q > 1:
+    elif q<9 and q > 1:
         print('Scaling to 1 dyno ...')
         print(scale(1,"standard-1X"))
     elif q < 1:

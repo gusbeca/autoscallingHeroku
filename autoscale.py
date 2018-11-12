@@ -92,11 +92,11 @@ def job():
     global a
     print('a y q :',a, '--',q)
 
-    if q>20:
+    if q>16:
         print('Scaling to 3 dynos...')
         a=3
         print(scale(a,"performance-m"))
-    elif a < 3 and q <21 and q > 10:
+    elif a < 3 and q <17 and q > 8:
         print('Scaling  to 2 dynos...')
         a=2
         print(scale(a, "performance-m"))

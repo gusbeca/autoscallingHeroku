@@ -51,7 +51,7 @@ def scale(quantity,size):
 
 
 #-----------TAREA DE CRON------------------------------------------------------------
-
+a=1
 sched = BlockingScheduler()
 
 @sched.scheduled_job('interval', minutes=2)
@@ -85,10 +85,7 @@ def job():
     q=qmensajes['Datapoints'][0]['Average']
     print(q)
 
-    if a:
-        pass
-    else:
-        a=1
+    global a
 
     if q>20:
         print('Scaling to 3 dynos...')

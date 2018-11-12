@@ -30,8 +30,8 @@ HEADERS = {
 #------------------------DEFINICION DE FUNCIONES-----------------------------------------
 
 #----------FUNCION DE ESCALADO--------------------------------------
-def scale(size):
-    payload = {'quantity': size}
+def scale(quantity,size):
+    payload = {'quantity': quantity, 'size': size}
     json_payload = json.dumps(payload)
     url = "https://api.heroku.com/apps/" + APP + "/formation/" + PROCESS
     try:
@@ -86,16 +86,16 @@ def job():
     print(q)
     if q>20:
         print('Scaling to 2 dynos...')
-        print(scale(3))
+        print(scale(3,"performance-m"))
     elif q <20 and q>18:
         print('Scaling  to 3 dynos...')
-        print(scale(2))
+        print(scale(2,"performance-m"))
     elif q<11 and q > 8:
         print('Scaling to 1 dyno ...')
-        print(scale(2))
+        print(scale(2,"performance-m"))
     elif q < 1:
         print('Scaling to 0 dyno ...')
-        print(scale(2))
+        print(scale(1, "standard-1X"))
 
 
 

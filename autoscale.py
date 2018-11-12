@@ -82,10 +82,15 @@ def job():
         Period=60,
         Statistics=['Average']
     )
-    q=qmensajes['Datapoints'][0]['Average']
+    try:
+        q=qmensajes['Datapoints'][0]['Average']
+    except:
+        q=0
+
     print(q)
 
     global a
+    print('a y q :',a, '--',q)
 
     if q>20:
         print('Scaling to 3 dynos...')

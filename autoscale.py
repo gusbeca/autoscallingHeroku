@@ -92,7 +92,7 @@ def job():
         print(scale(2,"performance-m"))
     elif q<9 and q > 1:
         print('Scaling to 1 dyno ...')
-        print(scale(1,"standard-1X"))
+        print(scale(2,"standard-1X"))
     elif q < 1:
         print('Scaling to 0 dyno ...')
         print(scale(0, "standard-1X"))

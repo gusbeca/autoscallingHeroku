@@ -54,7 +54,7 @@ def scale(quantity,size):
 a=1
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=2)
+@sched.scheduled_job('interval', minutes=1)
 def job():
 
     region_name = 'us-east-1'
